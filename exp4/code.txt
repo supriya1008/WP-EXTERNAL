@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling</title>
+</head>
+<body>
+    <h1 id="title">Event Handling Example</h1>
+    <button onclick="showAlert()">Click Me</button>
+    <input type="text" onfocus="changeBackground(this)" onblur="resetBackground(this)" placeholder="Focus on me">
+    <p id="hover" onmouseover="hoverEffect()" onmouseout="resetHover()">Hover over me</p>
+    <button ondblclick="doubleClick()">Double Click Me</button>
+    <button id="keyEvent" onkeydown="keyPressed(event)">Type something</button>
+
+    <script>
+        function showAlert() {
+            alert('Button clicked!');
+        }
+
+        function changeBackground(element) {
+            element.style.backgroundColor = 'yellow';
+        }
+
+        function resetBackground(element) {
+            element.style.backgroundColor = '';
+        }
+
+        function hoverEffect() {
+            document.getElementById('hover').style.color = 'red';
+        }
+
+        function resetHover() {
+            document.getElementById('hover').style.color = '';
+        }
+
+        function doubleClick() {
+            alert('Button double clicked!');
+        }
+
+        document.getElementById('keyEvent').addEventListener('keydown', function() {
+            console.log('Key pressed!');
+        });
+    </script>
+</body>
+</html>
