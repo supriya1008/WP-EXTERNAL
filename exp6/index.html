@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #cart {
+      background-color: #f4f4f4;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .item {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Shopping Cart</h1>
+  <div id="cart">
+    <p><strong>Items in your cart:</strong></p>
+    <ul id="cartItems">
+      <li class="item">Apple</li>
+      <li class="item">Banana</li>
+    </ul>
+  </div>
+  <br>
+  <button onclick="addItem()">Add Item</button>
+  <button onclick="removeItem()">Remove Item</button>
+  <button onclick="moveItem()">Move Item</button>
+  <button onclick="changeColors()">Change Colors</button>
+
+  <script>
+    function addItem() {
+      const newItem = document.createElement("li");
+      newItem.textContent = "Orange";
+      newItem.className = "item";
+      document.getElementById("cartItems").appendChild(newItem);
+    }
+
+    function removeItem() {
+      const cart = document.getElementById("cartItems");
+      if (cart.children.length > 0) {
+        cart.removeChild(cart.lastElementChild);
+      } else {
+        alert("No items to remove!");
+      }
+    }
+
+    function moveItem() {
+      const cart = document.getElementById("cartItems");
+      if (cart.children.length > 1) {
+        const firstItem = cart.firstElementChild;
+        cart.appendChild(firstItem);
+      } else {
+        alert("Not enough items to move!");
+      }
+    }
+
+    function changeColors() {
+      const cart = document.getElementById("cart");
+      cart.style.backgroundColor = cart.style.backgroundColor === "lightblue" ? "#f4f4f4" : "lightblue";
+
+      const items = document.getElementsByClassName("item");
+      for (let item of items) {
+        item.style.color = "green";
+        item.style.fontSize = "18px";
+      }
+    }
+  </script>
+</body>
+</html>
